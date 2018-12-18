@@ -3692,6 +3692,20 @@ API_EXPORT
 int CALL_CONV bladerf_write_otp(struct bladerf *dev,
                                   uint8_t *buf);
 
+/**
+ * Lock the bladeRF's OTP
+ *
+ * @note Locks the bladeRF's OTP by flipping security bits on
+ *
+ * @param       dev     Device handle
+ *
+ * @return 0 on success,
+ *         or ::BLADERF_ERR_INVAL on an invalid `page` or `count` value,
+ *         or a value from \ref RETCODES list on other failures.
+ */
+API_EXPORT
+int CALL_CONV bladerf_lock_otp(struct bladerf *dev);
+
 /** @} (End of FN_SPI_FLASH) */
 
 /**
