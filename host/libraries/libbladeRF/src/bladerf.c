@@ -1430,6 +1430,30 @@ int bladerf_write_flash(struct bladerf *dev,
     return status;
 }
 
+int bladerf_read_otp(struct bladerf *dev,
+                       uint8_t *buf)
+{
+    int status;
+    MUTEX_LOCK(&dev->lock);
+
+    status = dev->backend->get_otp(dev, (char *)buf);
+
+    MUTEX_UNLOCK(&dev->lock);
+    return status;
+}
+
+int bladerf_write_otp(struct bladerf *dev,
+                        uint8_t *buf)
+{
+    int status;
+    MUTEX_LOCK(&dev->lock);
+
+    status = dev->backend->write_otp(dev, (char *)buf);
+
+    MUTEX_UNLOCK(&dev->lock);
+    return status;
+}
+
 /******************************************************************************/
 /* Helpers & Miscellaneous */
 /******************************************************************************/
